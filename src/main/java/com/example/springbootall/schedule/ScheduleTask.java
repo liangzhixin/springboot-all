@@ -52,9 +52,8 @@ public class ScheduleTask {
     /**
      *  根据 cron 表达式定义，每隔 3 秒执行一次
      */
-    @Scheduled(cron = "0/3 * * * * ?")
+//    @Scheduled(cron = "0/3 * * * * ?")
     public void scheduleWithCron() throws InterruptedException {
-//        Thread.sleep(1000);
         log.info("current time : " + sdf.format(new Date()));
     }
 }

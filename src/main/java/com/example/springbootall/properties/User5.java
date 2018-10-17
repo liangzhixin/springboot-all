@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  *  1.读取默认配置文件的属性
  *  2.如果需要读取自定义配置文件,需要加载该配置文件才能读取(通过@PropertySource加载)
  */
-@Component
+//@Component
 public class User5 {
 
     @Autowired

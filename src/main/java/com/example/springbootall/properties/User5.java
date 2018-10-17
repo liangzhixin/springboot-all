@@ -14,7 +14,7 @@ public class User5 {
     @Autowired
     private Environment environment;
 
-    @Scheduled(cron = "0/3 * * * * ?")
+//    @Scheduled(cron = "0/3 * * * * ?")
     public void test(){
         String name = environment.getProperty("lzx.name");
         String age = environment.getProperty("lzx.age");

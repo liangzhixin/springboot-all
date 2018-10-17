@@ -36,6 +36,18 @@ public class ClusterDruidDataSourceConfig {
     @Value("${mybatis.cluster.mapper-locations}")
     private String mapperLocation;
 
+    @Value("${druid.initialSize}")
+    private String initialSize;
+
+    @Value("${druid.minIdle}")
+    private String minIdle;
+
+    @Value("${druid.maxActive}")
+    private String maxActive;
+
+    @Value("${druid.maxWait}")
+    private String maxWait;
+
     @Bean(name="clusterDataSource")
     public DataSource clusterDataSource(){
         DruidDataSource dataSource = new DruidDataSource();
@@ -43,6 +55,10 @@ public class ClusterDruidDataSourceConfig {
         dataSource.setUsername(username);
         dataSource.setPassword(password);
         dataSource.setDriverClassName(driverClassName);
+        dataSource.setInitialSize(Integer.parseInt(initialSize));
+        dataSource.setMinIdle(Integer.parseInt(minIdle));
+        dataSource.setMaxActive(Integer.parseInt(maxActive));
+        dataSource.setMaxWait(Long.parseLong(maxWait));
         return dataSource;
     }
 

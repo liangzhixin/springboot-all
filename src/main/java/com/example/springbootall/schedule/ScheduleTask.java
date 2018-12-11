@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Component
+//@Component
 @Slf4j
 public class ScheduleTask {
 

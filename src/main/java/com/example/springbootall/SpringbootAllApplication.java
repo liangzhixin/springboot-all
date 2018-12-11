@@ -15,10 +15,10 @@ public class SpringbootAllApplication {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(SpringbootAllApplication.class, args);
-//        String[] beanNames = context.getBeanDefinitionNames();
-//        for (String beanName : beanNames){
-//            System.out.println(beanName);
-//        }
+        String[] beanNames = context.getBeanDefinitionNames();
+        for (String beanName : beanNames){
+            System.out.println(beanName + "=====" + context.getBean(beanName).getClass());
+        }
     }
 
     @Bean

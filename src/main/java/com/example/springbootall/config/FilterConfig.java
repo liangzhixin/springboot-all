@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author Administrator    过滤器配置(过滤器在拦截器前执行)
  */
-@Configuration
+//@Configuration
 public class FilterConfig {
 
     @Bean
@@ -15,6 +15,7 @@ public class FilterConfig {
         FilterRegistrationBean<MyFilterOne> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(myFilterOne());
         registrationBean.setName("filter1");
+        registrationBean.addUrlPatterns("/*");
         //数字大的后执行
         registrationBean.setOrder(5);
         return registrationBean;
@@ -25,6 +26,7 @@ public class FilterConfig {
         FilterRegistrationBean<MyFilterTwo> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(myFilterTwo());
         registrationBean.setName("filter2");
+        registrationBean.addUrlPatterns("/*");
         //数字小的先执行
         registrationBean.setOrder(3);
         return registrationBean;

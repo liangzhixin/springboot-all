@@ -7,7 +7,6 @@ import javax.servlet.*;
 import javax.servlet.FilterConfig;
 import java.io.IOException;
 
-@Component
 @Slf4j
 public class MyFilterTwo implements Filter {
 

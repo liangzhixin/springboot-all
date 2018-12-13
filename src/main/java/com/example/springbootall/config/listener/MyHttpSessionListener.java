@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSessionListener;
  * 销毁Session的方式:
  *      1.session.invalidate()
  *      2.等待session自动超时,通过server.servlet.session.timeout属性设置session超时时间
+ *      3.停止当前应用
  */
 @WebListener
 @Slf4j

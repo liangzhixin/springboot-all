@@ -16,6 +16,8 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello(HttpSession session){
+//        session.invalidate();
+        log.info("session超时时间:" + session.getMaxInactiveInterval());
         return "hello world";
     }
 

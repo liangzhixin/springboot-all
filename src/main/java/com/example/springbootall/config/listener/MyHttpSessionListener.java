@@ -9,6 +9,10 @@ import javax.servlet.http.HttpSessionListener;
 
 /**
  * Session监听器,需要主类添加@ServletComponentScan注解,还有对Session属性的监听器,这里不做了解
+ *
+ * 销毁Session的方式:
+ *      1.session.invalidate()
+ *      2.等待session自动超时,通过server.servlet.session.timeout属性设置session超时时间
  */
 @WebListener
 @Slf4j

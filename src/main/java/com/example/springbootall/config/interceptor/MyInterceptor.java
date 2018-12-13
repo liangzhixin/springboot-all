@@ -1,4 +1,4 @@
-package com.example.springbootall.config;
+package com.example.springbootall.config.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

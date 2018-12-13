@@ -1,4 +1,4 @@
-package com.example.springbootall.config;
+package com.example.springbootall.config.filter1;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author Administrator    过滤器配置(过滤器在拦截器前执行)
  */
-//@Configuration
+@Configuration
 public class FilterConfig {
 
     @Bean

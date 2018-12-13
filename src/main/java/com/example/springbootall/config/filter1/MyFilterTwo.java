@@ -1,7 +1,6 @@
-package com.example.springbootall.config;
+package com.example.springbootall.config.filter1;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.FilterConfig;

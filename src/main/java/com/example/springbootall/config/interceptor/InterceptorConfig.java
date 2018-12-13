@@ -1,4 +1,4 @@
-package com.example.springbootall.config;
+package com.example.springbootall.config.interceptor;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

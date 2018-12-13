@@ -1,7 +1,6 @@
-package com.example.springbootall.config;
+package com.example.springbootall.config.filter2;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.annotation.Order;
 
 import javax.servlet.*;
 import javax.servlet.FilterConfig;
@@ -13,24 +12,24 @@ import java.io.IOException;
  *  2.过滤器执行顺序:根据类名的自然顺序排名, MyFilterFive > MyFilterFour > MyFilterSix > MyFilterThree
  *  3.经测试后发现@Order并不能控制过滤器的执行顺序
  */
-@WebFilter(filterName = "filter5", urlPatterns = {"/*"})
+@WebFilter(filterName = "filter6", urlPatterns = {"/*"})
 @Slf4j
-public class MyFilterFive implements Filter {
+public class MyFilterSix implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        log.info("filter five init ...");
+        log.info("filter six init ...");
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        log.info("filter five doFilter start ...");
+        log.info("filter six doFilter start ...");
         chain.doFilter(request, response);
-        log.info("filter five doFilter end ...");
+        log.info("filter six doFilter end ...");
     }
 
     @Override
     public void destroy() {
-        log.info("filter five destroy ...");
+        log.info("filter six destroy ...");
     }
 }

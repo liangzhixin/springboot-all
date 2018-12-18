@@ -1,6 +1,7 @@
 package com.example.springbootall;
 
 import com.alibaba.fastjson.JSON;
+import com.example.springbootall.datasource.transaction.TestTransactionService;
 import com.example.springbootall.mapper.cluster.StudentMapper;
 import com.example.springbootall.mapper.master.TeacherMapper;
 import com.example.springbootall.model.Student;
@@ -15,6 +16,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {SpringbootAllApplication.class})
 @Slf4j
@@ -26,6 +29,9 @@ public class TestDataSource {
     @Autowired
     TeacherService teacherService;
 
+    @Autowired
+    TestTransactionService testTransactionService;
+
     @Test
     public void testTeacherMapper(){
         teacherService.test();
@@ -34,5 +40,10 @@ public class TestDataSource {
     @Test
     public void testStudentMapper(){
         studentService.test();
+    }
+
+    @Test
+    public void testTranSactionService() throws IOException {
+        testTransactionService.test();
     }
 }

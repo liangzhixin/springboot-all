@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
@@ -12,6 +14,8 @@ import org.springframework.web.client.RestTemplate;
 @EnableScheduling
 @SpringBootApplication
 @EnableRetry
+//@EnableAspectJAutoProxy(proxyTargetClass = true, exposeProxy = true)
+@ImportResource(locations = {"classpath:spring-beans.xml"})
 @ServletComponentScan
 public class SpringbootAllApplication {
 

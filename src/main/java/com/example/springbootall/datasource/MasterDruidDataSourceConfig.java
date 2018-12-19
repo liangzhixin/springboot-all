@@ -19,9 +19,9 @@ import javax.sql.DataSource;
 /**
  *  Druid连接池+多数据源+Mybatis
  */
-@Configuration
-@MapperScan(basePackages = {"com.example.springbootall.mapper.master"},
-        sqlSessionFactoryRef = "masterSqlSessionFactory")
+//@Configuration
+//@MapperScan(basePackages = {"com.example.springbootall.mapper.master"},
+//        sqlSessionFactoryRef = "masterSqlSessionFactory")
 public class MasterDruidDataSourceConfig {
 
     @Value("${spring.datasource.master.url}")

@@ -1,6 +1,8 @@
 package com.example.springbootall.datasource.transaction;
 
+import com.example.springbootall.mapper.cluster.StudentMapper;
 import com.example.springbootall.mapper.master.TeacherMapper;
+import com.example.springbootall.model.Student;
 import com.example.springbootall.model.Teacher;
 import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +23,18 @@ public class TestTransactionService {
     @Autowired
     private TeacherMapper teacherMapper;
 
+    @Autowired
+    private StudentMapper studentMapper;
+
     /**
      * 本类调用事务方法,必须通过((xxxService)AopContext.currentProxy()).方法名()来调用事务方法
      */
     public void test() throws Exception {
 //        test1();  //事务不生效
 //        ((TestTransactionService)AopContext.currentProxy()).test1();    //事务生效
-        ((TestTransactionService)AopContext.currentProxy()).test2();    //默认只对RuntimeException和Error生效
+//        ((TestTransactionService)AopContext.currentProxy()).test2();    //默认只对RuntimeException和Error生效
+//        ((TestTransactionService)AopContext.currentProxy()).test3();      //springboot分布式事务
+        ((TestTransactionService)AopContext.currentProxy()).test4();
     }
 
     /**
@@ -74,6 +81,38 @@ public class TestTransactionService {
         }catch (Exception e){
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             throw new Exception(e);
+        }
+    }
+
+    /**
+     * springboot分布式事务,多数据源同样可以进行回滚
+     */
+    @Transactional(rollbackFor = {Exception.class})
+    public void test3(){
+        Teacher teacher = teacherMapper.selectById(1);
+        teacher.setAge(teacher.getAge() + 1);
+        teacherMapper.updateById(teacher);
+        int i = 1/0;
+        Student student = studentMapper.selectById(1);
+        student.setAge(student.getAge() - 1);
+        studentMapper.updateById(student);
+    }
+
+    /**
+     * springboot分布式事务,多数据源同样可以进行回滚
+     */
+    @Transactional
+    public void test4(){
+        try {
+            Teacher teacher = teacherMapper.selectById(1);
+            teacher.setAge(teacher.getAge() + 1);
+            teacherMapper.updateById(teacher);
+            int i = 1 / 0;
+            Student student = studentMapper.selectById(1);
+            student.setAge(student.getAge() - 1);
+            studentMapper.updateById(student);
+        }catch (Exception e){
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
         }
     }
 }
